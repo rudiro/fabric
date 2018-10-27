@@ -6,7 +6,7 @@ arg1 = int(arg1)
 
 anchorPeers = ""
 orderers  = ""
-kafka = ""
+
 arg1 -= 1
 for i in range(arg1):
     anchorPeers += "            - Host: peer" + str( (i+1) * 2 ) + ".org1.example.com\n"
@@ -15,12 +15,8 @@ for i in range(arg1):
 for i in range(arg1):
     orderers += '        - {IP-HOST-' + str( (i+2)) + "}:7050\n"
 
-for i in range(arg1):
-    kafka += '            - {IP-HOST-' + str( (i+2)) + "}:9092\n"
-    kafka += '            - {IP-HOST-' + str( (i+2)) + "}:10092\n"
-    kafka += '            - {IP-HOST-' + str( (i+2)) + "}:11092\n"
-    kafka += '            - {IP-HOST-' + str( (i+2)) + "}:12092\n"
 
+    
 file = """Profiles:
     ComposerOrdererGenesis:
         Orderer:
@@ -64,11 +60,9 @@ Orderer: &OrdererDefaults
         PreferredMaxBytes: 512 KB
     Kafka:
         Brokers:
-            - {IP-HOST-1}:9092
-            - {IP-HOST-1}:10092
-            - {IP-HOST-1}:11092
-            - {IP-HOST-1}:12092
-""" + kafka + """
+            - 10.160.19.79:9092
+            - 10.160.19.79:9092
+            - 10.160.19.79:9092
     Organizations:
 
 Application: &ApplicationDefaults
