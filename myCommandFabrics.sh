@@ -7,6 +7,7 @@ sudo vi /etc/hosts
 10.160.2.5     orderer0        orderer0.example.com
 #10.160.2.6     orderer1        orderer1.example.com
 
+export FABRIC_START_TIMEOUT=30
 cd fabric-1.1-kafka-multi-orderer
 ./startFabric.sh
 
