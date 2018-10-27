@@ -1,6 +1,7 @@
 #https://www.youtube.com/watch?v=bO5jeCYkSFY
 #https://github.com/InflatibleYoshi/fabric-1.1-kafka-multi-orderer
 #https://www.youtube.com/watch?v=gAxK6zYrfxI
+#https://github.com/rudiro/fabric
 
 provider "aws" {
   region     = "${var.region}"
@@ -147,7 +148,7 @@ resource "aws_instance" "fabric" {
   availability_zone      = "eu-central-1a"
   private_ip             = "10.160.2.5"
   ami                    = "ami-062903ba092e9a0b5"
-  instance_type          = "t2.large"
+  instance_type          = "t2.small"
   key_name               = "HL_UBUNTU"
   subnet_id              = "${aws_subnet.fabric-subnet.id}"
   vpc_security_group_ids = ["${aws_security_group.allow_http.id}"]
@@ -160,7 +161,8 @@ resource "aws_instance" "fabric" {
       "sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 10.160.2.240:/ /home/ubuntu/fabric-1.1-kafka-multi-orderer",
       "sudo chown -R ubuntu fabric-1.1-kafka-multi-orderer",
       "source .profile",
-      "git clone https://github.com/InflatibleYoshi/fabric-1.1-kafka-multi-orderer",
+      "git clone https://github.com/rudiro/fabric",
+      "mv fabric fabric-1.1-kafka-multi-orderer",
       "cd fabric-1.1-kafka-multi-orderer",
       "python start.py ${var.n} terraform",
     ]
@@ -191,7 +193,7 @@ resource "aws_instance" "fabric-peers" {
   availability_zone      = "eu-central-1a"
   private_ip             = "10.160.2.${count.index + 6}"
   ami                    = "ami-062903ba092e9a0b5"
-  instance_type          = "t2.large"
+  instance_type          = "t2.small"
   key_name               = "HL_UBUNTU"
   subnet_id              = "${aws_subnet.fabric-subnet.id}"
   vpc_security_group_ids = ["${aws_security_group.allow_http.id}"]
