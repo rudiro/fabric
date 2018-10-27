@@ -162,7 +162,7 @@ resource "aws_instance" "fabric" {
       "sudo chown -R ubuntu fabric-1.1-kafka-multi-orderer",
       "source .profile",
       "git clone https://github.com/rudiro/fabric",
-      "mv fabric fabric-1.1-kafka-multi-orderer",
+      "mv fabric/* fabric-1.1-kafka-multi-orderer/.",
       "cd fabric-1.1-kafka-multi-orderer",
       "python start.py ${var.n} terraform",
     ]
