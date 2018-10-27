@@ -148,7 +148,7 @@ resource "aws_instance" "fabric" {
   availability_zone      = "eu-central-1a"
   private_ip             = "10.160.2.5"
   ami                    = "ami-062903ba092e9a0b5"
-  instance_type          = "t2.small"
+  instance_type          = "t2.large"
   key_name               = "HL_UBUNTU"
   subnet_id              = "${aws_subnet.fabric-subnet.id}"
   vpc_security_group_ids = ["${aws_security_group.allow_http.id}"]
@@ -193,7 +193,7 @@ resource "aws_instance" "fabric-peers" {
   availability_zone      = "eu-central-1a"
   private_ip             = "10.160.2.${count.index + 6}"
   ami                    = "ami-062903ba092e9a0b5"
-  instance_type          = "t2.small"
+  instance_type          = "t2.large"
   key_name               = "HL_UBUNTU"
   subnet_id              = "${aws_subnet.fabric-subnet.id}"
   vpc_security_group_ids = ["${aws_security_group.allow_http.id}"]
