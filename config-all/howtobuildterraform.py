@@ -11,7 +11,7 @@ PEERNUMBER = ""
 PEERADMINCARD = ""
 arg1 -= 1
 for i in range(arg1):
-    HOSTS += 'HOST' + str(i+2) + '=192.168.1.' + str(i+6) + '\n'
+    HOSTS += 'HOST' + str(i+2) + '=10.160.2.' + str(i+6) + '\n'
 
 for i in range(arg1):
     CONFIGTX += 'sed -i -e "s/{IP-HOST-' + str(i+2) + '}/$HOST' + str(i+2) + '/g" configtx.yaml\n'
@@ -28,7 +28,7 @@ for i in range(arg1):
 
 file = """#!/bin/bash
 cd "$(dirname "$0")"
-HOST1=192.168.1.5
+HOST1=10.160.2.5
 """ + HOSTS + """
 sed -i -e "s/{IP-HOST-1}/$HOST1/g" configtx.yaml
 """ + CONFIGTX + """

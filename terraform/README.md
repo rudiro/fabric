@@ -14,7 +14,7 @@ terraform init
 terraform plan
 terraform apply
 ```
-### On first machine → 192.168.1.5
+### On first machine → 10.160.2.5
 ```
 cd fabric-1.1-kafka-multi-orderer/ 
 cd composer
@@ -24,9 +24,9 @@ cd ..
 ./startFabric.sh
 ```
 
-### On all other machines 192.168.1.6…
+### On all other machines 10.160.2.6…
 ```
-write “192.168.1.5 orderer0 orderer0.example.com” >> /etc/hosts
+write “10.160.2.5 orderer0 orderer0.example.com” >> /etc/hosts
 cd fabric-1.1-kafka-multi-orderer/
 chmod +x startFabric-peer(n).sh
 ./startFabric-Peer(n).sh
