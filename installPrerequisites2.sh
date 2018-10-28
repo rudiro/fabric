@@ -26,7 +26,7 @@ git clone https://gerrit.hyperledger.org/r/fabric
 cd fabric
 make release
 cd ~
-curl -sSL https://goo.gl/byy2Qj | bash -s 1.3.0
+curl -sSL https://goo.gl/byy2Qj | bash -s $ARCH-1.3.0
 mkdir fabric-binaries
 mv bin fabric-binaries/bin
 echo 'export PATH=~/fabric-binaries/bin:$PATH' >> ~/.profile
