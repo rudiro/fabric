@@ -36,6 +36,7 @@ services:
         - ./:/etc/hyperledger/configtx
         - ./crypto-config/ordererOrganizations/example.com/orderers/orderer""" + str(i + 1) + """.example.com/msp:/etc/hyperledger/msp/orderer/msp
         - ./crypto-config/ordererOrganizations/example.com/orderers/orderer""" + str(i + 1) + """.example.com/tls:/etc/hyperledger/tls/orderer/tls
+        - ./orderer""" + str(i + 1) + """.example.com:/var/hyperledger/production/orderer
 
   peer""" + str(2 + (i*2)) + """.org1.example.com:
     container_name: peer""" + str(2 + (i*2)) + """.org1.example.com
@@ -118,6 +119,8 @@ services:
         - ./crypto-config/peerOrganizations/org1.example.com/peers/peer""" + str(3 + (i*2)) + """.org1.example.com/tls:/etc/hyperledger/peer/tls
         - ./crypto-config/peerOrganizations/org1.example.com/users:/etc/hyperledger/msp/users
         - ./crypto-config/ordererOrganizations/example.com/orderers/orderer""" + str(i + 1) + """.example.com/msp:/etc/hyperledger/msp/orderer/msp
+        - ./couchdb""" + str(i + 1) + """/data:/opt/couchdb/data
+        - ./couchdb""" + str(i + 1) + """/etc:/opt/couchdb/etc
     depends_on:
       - couchdb""" + str(3 + (i*2)) + """
 

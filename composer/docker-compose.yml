@@ -44,6 +44,7 @@ services:
         - ./:/etc/hyperledger/configtx
         - ./crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/msp:/etc/hyperledger/msp/orderer/msp
         - ./crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/tls:/etc/hyperledger/tls/orderer/tls
+        - ./orderer0.example.com:/var/hyperledger/production/orderer
 
   peer0.org1.example.com:
     container_name: peer0.org1.example.com
@@ -91,7 +92,9 @@ services:
       - 5984:5984
     environment:
       DB_URL: http://localhost:5984/member_db
-
+    volumes:
+        - ./couchdb/data:/opt/couchdb/data
+        - ./couchdb/etc:/opt/couchdb/etc
 
   peer1.org1.example.com:
     container_name: peer1.org1.example.com
@@ -139,4 +142,7 @@ services:
       - 6984:5984
     environment:
       DB_URL: http://localhost:6984/member_db
+    volumes:
+        - ./couchdb1/data:/opt/couchdb/data
+        - ./couchdb1/etc:/opt/couchdb/etc
 

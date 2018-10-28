@@ -3,6 +3,8 @@
 #https://www.youtube.com/watch?v=gAxK6zYrfxI
 #https://github.com/rudiro/fabric
 
+#https://www.youtube.com/watch?v=gAxK6zYrfxI
+
 provider "aws" {
   region     = "${var.region}"
   access_key = "${var.aws_access_key}"
