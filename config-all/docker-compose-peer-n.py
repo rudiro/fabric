@@ -11,7 +11,7 @@ for i in range(arg1):
 services:
   orderer""" + str(i + 1) + """.example.com:
     container_name: orderer""" + str(i + 1) + """.example.com
-    image: hyperledger/fabric-orderer:$ARCH-1.3.0
+    image: hyperledger/fabric-orderer:1.3.0
     environment:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -40,7 +40,7 @@ services:
 
   peer""" + str(2 + (i*2)) + """.org1.example.com:
     container_name: peer""" + str(2 + (i*2)) + """.org1.example.com
-    image: hyperledger/fabric-peer:$ARCH-1.3.0
+    image: hyperledger/fabric-peer:1.3.0
     environment:
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
@@ -86,7 +86,7 @@ services:
 
   peer""" + str(3 + (i*2)) + """.org1.example.com:
     container_name: peer""" + str(3 + (i*2)) + """.org1.example.com
-    image: hyperledger/fabric-peer:$ARCH-1.3.0
+    image: hyperledger/fabric-peer:1.3.0
     environment:
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
