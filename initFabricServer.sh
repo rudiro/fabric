@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd fabric-1.1-kafka-multi-orderer/composer/
+cd ./composer/
 chmod +x howtobuild.sh
 ./howtobuild.sh
 
